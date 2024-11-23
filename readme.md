@@ -1,3 +1,8 @@
+# Applikation
+Die Applikation besteht aus 3 Services: Payment Service, Order Service und einem MessageBroker (RabbitMQ).\
+Der Payment Service schreibt über einen Scheduler Nachrichten in die MessageQueue, welche vom Order Service konsumiert werden und anschließend wieder über den MessageBroker an den Payment Service übermittelt werden.\
+In beiden Services (Payment & Order) wird die Abarbeitung der Messages über Konsolenausgaben dargestellt.
+
 # Registry
 
 Docker Login: `docker login --username <user> --password <token> ghcr.io`\
