@@ -21,7 +21,7 @@ public class RabbitMqProducer {
     public void produceMessage() {
         final MessageDto messageDto = new MessageDto();
         messageDto.setSource("PAYMENT");
-        messageDto.setOrderNumber("1");
+        messageDto.setOrderNumber(String.valueOf(Math.round(Math.random() * 10000)));
 
         ObjectMapper om = new ObjectMapper();
         String content = null;
