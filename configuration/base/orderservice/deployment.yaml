@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      labels:
+        app: order
+    spec:
+      containers:
+        - name: order
+          image: ghcr.io/mcce2024/gr4-aktt1-order:latest
+          ports:
+            - name: service
+              containerPort: 9002
+          envFrom:
+            - configMapRef:
+                name: order-config

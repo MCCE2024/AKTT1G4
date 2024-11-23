@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: payment
+  template:
+    metadata:
+      labels:
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: ghcr.io/mcce2024/gr4-aktt1-payment:latest
+          ports:
+            - name: service
+              containerPort: 9001
+          envFrom:
+            - configMapRef:
+                name: payment-config
