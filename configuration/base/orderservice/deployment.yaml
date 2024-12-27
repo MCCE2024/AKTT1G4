@@ -12,12 +12,18 @@ spec:
       labels:
         app: order
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: order
           image: ghcr.io/mcce2024/gr4-aktt1-order:latest
           ports:
             - name: service
               containerPort: 9002
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
           envFrom:
             - configMapRef:
                 name: order-config

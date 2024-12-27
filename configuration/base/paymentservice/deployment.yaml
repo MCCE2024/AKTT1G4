@@ -12,12 +12,18 @@ spec:
       labels:
         app: payment
     spec:
+      automountServiceAccountToken: false
       containers:
         - name: payment
           image: ghcr.io/mcce2024/gr4-aktt1-payment:latest
           ports:
             - name: service
               containerPort: 9001
+          securityContext:
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
           envFrom:
             - configMapRef:
                 name: payment-config
