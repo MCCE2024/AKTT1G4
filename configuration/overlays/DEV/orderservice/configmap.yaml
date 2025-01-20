@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: order-config
+data:
+  SPRING_RABBITMQ_HOST: "rabbitmq"
+  SPRING_RABBITMQ_USERNAME: "devuser"
+  SPRING_RABBITMQ_PASSWORD: "devpassword"
